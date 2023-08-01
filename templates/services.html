@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% block content %}
+      </div>
+      <!-- header section end -->
+      <!-- services section start -->
+      <div class="services_section layout_padding">
+         <div class="container">
+            <h1 class="services_taital">Services </h1>
+            <p class="services_text">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration</p>
+            <div class="services_section_2">
+               <div class="row">
+                  <form method="get">
+                     <input type="text" name="searchterm">
+                     <input type="submit" name="searchfilter" value="Search">
+                  </form>
+               </div>
+               <div class="row">
+                  {% for serv in serviceData %}
+                     <div class="col-md-4">
+                        <div><img src="/static/images/{{serv.service_icon}}" class="services_img"></div>
+                        <div>{{serv.service_desc | upper | safe }}</div>
+                        <div>Total Word count: {{serv.service_desc | wordcount | safe }}</div>
+                        <div>Total Character count: {{serv.service_desc | length | safe }}</div>
+                        <div>Slicing Chars: {{serv.service_desc | slice:"0:4" | safe }}</div>
+                        <div class="btn_main"><a href="#">{{serv.service_title}}</a></div>
+                     </div>
+                     {% empty %}
+                        No Records Found!
+                  {% endfor %}
+                  {% comment %} <div class="col-md-4">
+                     <div><img src="/static/images/img-1.png" class="services_img"></div>
+                     <div>Hello <b>World</b>. It's a beautiful day</div>
+                     <div class="btn_main"><a href="#">Rafting</a></div>
+                  </div> {% endcomment %}
+                  {% comment %} <div class="col-md-4">
+                     <div><img src="/static/images/img-2.png" class="services_img"></div>
+                     <div class="btn_main active"><a href="#">Hiking</a></div>
+                  </div>
+                  <div class="col-md-4">
+                     <div><img src="/static/images/img-3.png" class="services_img"></div>
+                     <div class="btn_main"><a href="#">Camping</a></div>
+                  </div> {% endcomment %}
+               </div>
+
+               <nav aria-label="...">
+                  <ul class="pagination">
+                     {% if serviceData.has_previous %}
+                    <li class="page-item">
+                      <a class="page-link" href="/services/?page={{serviceData.previous_page_number}}" tabindex="-1">Previous</a>
+                    </li>
+                    
+                    {% endif %} 
+
+                    {% for n in totalPagelist %}
+                    <li class="page-item"><a class="page-link" href="/services/?page={{n}}">{{n}}</a></li>
+                    {% endfor %}
+                    
+                    {% if serviceData.has_next %}
+                    
+                    <li class="page-item">
+                      <a class="page-link" href="/services/?page={{serviceData.next_page_number}}">Next</a>
+                    </li>
+                    {% endif %}
+                  </ul>
+                </nav>
+                
+            </div>
+         </div>
+      </div>
+      <!-- services section end -->
+{% endblock %}

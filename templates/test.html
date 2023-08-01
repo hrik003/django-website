@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <title>{{ title }}</title>
+    </head>
+    <body> 
+        Welcome to Hriks World!
+
+        <h3>Course List: </h3>
+        {% for c in clist %}
+            <p>{{forloop.counter}}. <b>{{ c }}</b></p>
+        {% endfor %}
+
+        <h3>IF ELSE CONDTION WITH NUMBER LISTS</h3>
+        {% if numbers|length > 0 %}
+        
+            {% for n in numbers %}
+                {% if n > 20 %}
+                    <p>{{ n }}</p>
+                {% endif %}
+            {% endfor %}
+
+        {% else %} 
+            NO Data Found!   
+        {% endif %}
+    </body>
+</html>

@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block content %}
+      </div>
+      <!-- header section end -->
+      <!-- contact section start -->
+      <div class="contact_section layout_padding">
+        <div class="container">
+            <h1 class="contact_taital">Marksheet Form</h1>
+            
+
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="">Subject 1</label>
+                    <input type="text" name="num1" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="">Subject 2</label>
+                    <input type="text" name="num2" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="">Subject 3</label>
+                    <input type="text" name="num3" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="">Subject 4</label>
+                    <input type="text" name="num4" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="">Subject 5</label>
+                    <input type="text" name="num5" class="form-control">
+                </div>
+                
+                <div class="form-group">
+                    
+                    <button type="submit" name="submit" class="form-control">Marksheet</button>
+                </div>
+
+                <div class="form-group">
+                    <label for="">Total</label>
+                    <input type="text" name="total" value="{{c}}" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="">Percentage</label>
+                    <input type="text" name="percentage" value="{{p}}" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="">Division</label>
+                    <input type="text" name="division" value="{{d}}" class="form-control">
+                </div>
+            </form>
+        </div>
+      </div>
+      <!-- contact section end -->
+{% endblock %}
